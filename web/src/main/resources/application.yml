@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:codeversity}?useLegacyDatetimeCode=false&useUnicode=yes&characterEncoding=UTF-8&nullNamePatternMatchesAll=true
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:12345}
+    testWhileIdle: true
+    validationQuery: SELECT 1
+  jpa:
+    show-sql: true
+    database-platform: MYSQL
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL57InnoDBDialect
+  thymeleaf:
+    cache: ${ENABLE_CACHE:true}
