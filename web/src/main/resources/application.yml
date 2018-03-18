@@ -16,4 +16,4 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL57InnoDBDialect
   thymeleaf:
-    cache: ${ENABLE_CACHE:true}
+    cache: ${ENABLE_CACHE:false}
