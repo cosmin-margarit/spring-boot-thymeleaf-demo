@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<!--/*@thymesVar id="car" type="com.cosmin.repository.cars.Car"*/-->
+<head>
+    <title>Car</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet'
+          type='text/css'/>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+<section layout:fragment="content">
+
+    <div th:replace="fragments/notification"></div>
+
+    <div class="content">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="block block-rounded">
+                    <div class="block-header">
+                        <ul class="block-options">
+                            <li>
+                                <a th:href="@{'/cars/edit/' + ${car.id}}" title="Edit Car"><i
+                                        class="fa fa-edit"></i>Edit</a>
+                            </li>
+                        </ul>
+                        <h3 class="block-title">Basic information</h3>
+                    </div>
+                    <div class="container block">
+                        <div th:replace="fragments/entityField :: entityField(label='ID', value=${car.id})"></div>
+                        <div th:replace="fragments/entityField :: entityField(label='Marque', value=${car.marque})"></div>
+                        <div th:replace="fragments/entityField :: entityField(label='Model', value=${car.model})"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+<section layout:fragment="js">
+</section>
+</body>
+</html>

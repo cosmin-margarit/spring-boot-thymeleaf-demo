@@ -1,0 +1,6 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<p th:fragment="entityField" th:classappend="(${#strings.isEmpty(value)} OR ${#lists.size(value)}==0) ? hidden :active">
+    <strong th:text="${label + ': '}"></strong>
+    <span th:text="${value}"></span>
+</p>
+</html>

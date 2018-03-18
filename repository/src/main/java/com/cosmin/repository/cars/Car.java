@@ -9,7 +9,7 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Enumerated(EnumType.STRING)
-    private CarMark mark;
+    private CarMarque marque;
     private String model;
 
     public Long getId() {
@@ -21,12 +21,12 @@ public class Car {
         return this;
     }
 
-    public CarMark getMark() {
-        return mark;
+    public CarMarque getMarque() {
+        return marque;
     }
 
-    public Car setMark(CarMark mark) {
-        this.mark = mark;
+    public Car setMarque(CarMarque marque) {
+        this.marque = marque;
         return this;
     }
 

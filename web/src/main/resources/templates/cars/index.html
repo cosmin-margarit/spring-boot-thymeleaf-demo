@@ -3,12 +3,12 @@
 
 <head>
     <title>Cars</title>
+    <script th:src="@{/js/jquery.min.js}"></script>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet'
           type='text/css'/>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
+    <script th:src="@{/js/carsJS.js}"></script>
 </head>
 
 <body>
@@ -31,7 +31,9 @@
                             <h3 class="panel-title">Panel Heading</h3>
                         </div>
                         <div class="col col-xs-6 text-right">
-                            <button type="button" class="btn btn-sm btn-primary btn-create">Create New</button>
+                            <a type="button" class="btn btn-sm btn-primary btn-create" th:href="@{/cars/create}">
+                                Create New
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -50,14 +52,21 @@
                         <!--/*@thymesVar id="car" type="com.cosmin.repository.cars.Car"*/-->
                         <tr th:each="car:${cars.getContent()}">
                             <td class="hidden-xs text-center">
-                                <a th:text="${car.id}" th:href="@{/cars/{carId}(cardId=${car.id})}"></a>
+                                <a th:text="${car.id}" th:href="@{/cars/{id}(id=${car.id})}"></a>
                             </td>
-                            <td class="text-center" th:text="${car.mark}">
+                            <td class="text-center" th:text="${car.marque}">
                             </td>
                             <td class="text-center" th:text="${car.model}"></td>
                             <td align="center">
-                                <a class="btn btn-default" title="Edit Car"><em class="fa fa-pencil"></em></a>
-                                <a class="btn btn-danger" title="Delete car"><em class="fa fa-trash"></em></a>
+                                <a class="btn btn-default" title="Edit Car"
+                                   th:href="@{/cars/edit/{id}(id=${car.id})}"><em class="fa fa-pencil"></em>
+                                </a>
+                                <a class="btn btn-danger confirm-car-delete" id="test" title="Delete car"
+                                   th:attrappend="data-href='/cars/delete/' + ${car.id}"
+                                   th:href="@{/cars/delete/{id}(id=${car.id})}"
+                                >
+                                    <i class="fa fa-trash"></i>
+                                </a>
                             </td>
                         </tr>
                         </tbody>
@@ -66,8 +75,6 @@
                 </div>
                 <div class="panel-footer">
                     <div class="row">
-                        <div class="col col-xs-4">Page 1 of 5
-                        </div>
                         <div class="col col-xs-8">
                             <ul class="pagination hidden-xs pull-right">
                                 <li><a href="#">1</a></li>

@@ -1,0 +1,11 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<!--/*@thymesVar id="notification" type="com.codegile.anthem.webapp.FlashMessage"*/-->
+<div class="alert alert-dismissable"
+     th:classappend=" ${'alert-' + notification_type}">
+    <div th:class="(${notification_message}==null)?hidden:active">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <h3 th:if="${notification_title}" class="font-w300 push-15" th:text="${notification_title}"></h3>
+        <p th:text="${notification_message}"></p>
+    </div>
+</div>
+</html>

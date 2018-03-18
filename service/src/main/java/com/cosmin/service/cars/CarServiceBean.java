@@ -19,4 +19,24 @@ public class CarServiceBean implements CarService {
     public Page<Car> findAll(Filters filters) {
         return carRepository.findAll(new PageRequest(filters.getPage(), filters.getPageSize()));
     }
+
+    @Override
+    public Car read(Long carId) {
+        Car car = carRepository.findOne(carId);
+        if (car == null) {
+            throw new RuntimeException("Car not found!");
+        }
+        return car;
+    }
+
+    @Override
+    public Car save(Car dbCar) {
+        return carRepository.save(dbCar);
+    }
+
+    @Override
+    public void delete(Long id) {
+        Car read = read(id);
+        carRepository.delete(read);
+    }
 }

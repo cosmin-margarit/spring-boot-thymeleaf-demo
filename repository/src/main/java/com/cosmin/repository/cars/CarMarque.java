@@ -1,5 +1,5 @@
 package com.cosmin.repository.cars;
 
-public enum CarMark {
+public enum CarMarque {
     DACIA, TESLA, JAGUAR, VOLVO, SKODA, AUDI, MERCEDES, BMW
 }
