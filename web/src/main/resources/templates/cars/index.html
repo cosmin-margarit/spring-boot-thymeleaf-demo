@@ -12,6 +12,7 @@
 </head>
 
 <body>
+
 <div class="container">
     <div class="row">
 
@@ -21,6 +22,8 @@
             for buttons or pagination.</p>
         <p> </p>
         <p> </p>
+
+        <div th:replace="fragments/notification"></div>
 
         <div class="col-md-10 col-md-offset-1">
 
@@ -43,13 +46,14 @@
                         <thead>
                         <tr>
                             <th class="hidden-xs text-center">ID</th>
-                            <th class="text-center">Mark</th>
+                            <th class="text-center">Marque</th>
                             <th class="text-center">Model</th>
                             <th class="text-center">Actions&nbsp;<em class="fa fa-cog"></em></th>
                         </tr>
                         </thead>
                         <tbody>
                         <!--/*@thymesVar id="car" type="com.cosmin.repository.cars.Car"*/-->
+                        <!--/*@thymesVar id="cars" type="org.springframework.data.domain.Page"*/-->
                         <tr th:each="car:${cars.getContent()}">
                             <td class="hidden-xs text-center">
                                 <a th:text="${car.id}" th:href="@{/cars/{id}(id=${car.id})}"></a>
